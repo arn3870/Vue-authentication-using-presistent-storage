@@ -3,7 +3,7 @@
     <q-form method="post">
     <q-input
       outlined
-      v-model="ph"
+      v-model="name"
       label="Username"
       placeholder="Email"
       :dense="dense"
@@ -12,7 +12,7 @@
     <q-input
       outlined
       type="password"
-      v-model="ph"
+      v-model="password"
       label="Password"
       placeholder="Password"
       :dense="dense"
@@ -54,6 +54,8 @@ body {
   border-radius: 20px;
 }
 .q-button{
-
+  justify-content: center;
+  margin: auto;
+  display: flex;
 }
 </style>

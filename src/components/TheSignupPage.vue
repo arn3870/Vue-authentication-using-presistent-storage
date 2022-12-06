@@ -4,7 +4,7 @@
       <q-form>
         <q-input
           outlined
-          v-model="ph"
+          v-model="name"
           label="Name"
           placeholder="Name"
           :dense="dense"
@@ -12,7 +12,7 @@
         <br />
         <q-input
           outlined
-          v-model="ph"
+          v-model="email"
           label="Email"
           placeholder="Email"
           :dense="dense"
@@ -21,7 +21,7 @@
         <q-input
           outlined
           type="password"
-          v-model="ph"
+          v-model="password"
           label="Password"
           placeholder="Password"
           :dense="dense"
@@ -30,21 +30,26 @@
         <q-input
           outlined
           type="password"
-          v-model="ph"
+          v-model="confirmPassword"
           label="Confirm Password"
           placeholder="Confirm Password"
           :dense="dense"
         />
         <br />
-        <q-btn color="secondary" label="Signup" />
+        <q-btn
+          class="sign-up-button"
+          color="secondary"
+          label="Signup"
+          v-model="signupSubmitButton"
+        />
         <br />
       </q-form>
-        <p style="margin: 0px 100px 16px">
-          Already have an account?
-          <router-link to="/" style="color: #26a69a; border: none; padding: 0;">
-            Login
-          </router-link>
-        </p>
+      <p style="margin: 0px 100px 16px">
+        Already have an account?
+        <router-link to="/" style="color: #26a69a; border: none; padding: 0">
+          Login
+        </router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -71,5 +76,10 @@ body {
   justify-content: center;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
+}
+.sign-up-button {
+  justify-content: center;
+  margin: auto;
+  display: flex;
 }
 </style>
