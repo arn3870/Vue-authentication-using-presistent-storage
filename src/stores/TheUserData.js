@@ -6,12 +6,16 @@ export const userData = defineStore("userData", {
     const email = [''];
     const password = [''];
     const confirmPassword = [''];
-    const signupSubmitButton = () => {};
+    // const userDataCollection = []
+    const signupSubmitButton = () => {
+
+    };
     return {
       name,
       email,
       password,
       confirmPassword,
+      // userDataCollection,
       signupSubmitButton,
     };
   },

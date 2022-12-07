@@ -4,7 +4,7 @@
       <q-form>
         <q-input
           outlined
-          v-model="name"
+          v-model="name1"
           label="Name"
           placeholder="Name"
           :dense="dense"
@@ -12,7 +12,7 @@
         <br />
         <q-input
           outlined
-          v-model="email"
+          v-model="email1"
           label="Email"
           placeholder="Email"
           :dense="dense"
@@ -21,7 +21,7 @@
         <q-input
           outlined
           type="password"
-          v-model="password"
+          v-model="password1"
           label="Password"
           placeholder="Password"
           :dense="dense"
@@ -30,7 +30,7 @@
         <q-input
           outlined
           type="password"
-          v-model="confirmPassword"
+          v-model="confirmPassword1"
           label="Confirm Password"
           placeholder="Confirm Password"
           :dense="dense"
@@ -40,7 +40,7 @@
           class="sign-up-button"
           color="secondary"
           label="Signup"
-          v-model="signupSubmitButton"
+          @click="getVals"
         />
         <br />
       </q-form>
@@ -57,22 +57,39 @@
 <script>
 import { storeToRefs } from 'pinia';
 import { userData } from '../stores/TheUserData'
+import { computed, ref } from 'vue'
 export default {
   setup() {
+    let email1 = ref('');
+    let name1 = ref('');
+    let password1 = ref('');
+    let confirmPassword1 = ref('');
     let usersDataFromStore = userData();
-    const { name } = storeToRefs(usersDataFromStore);
-    const { email } = storeToRefs(usersDataFromStore);
-    const { password } = storeToRefs(usersDataFromStore);
-    const { confirmPassword } = storeToRefs(usersDataFromStore);
-    const { signupSubmitButton } = storeToRefs(usersDataFromStore);
+    let { name } = storeToRefs(usersDataFromStore);
+    let { email } = storeToRefs(usersDataFromStore);
+    let { password } = storeToRefs(usersDataFromStore);
+    let { confirmPassword } = storeToRefs(usersDataFromStore);
+
+    let getVals = () => {
+    name.value.push(name1.value);
+    email.value.push(email1.value);
+    password.value.push(password.value);
+    confirmPassword.value.push(confirmPassword.value)
+    }
+
+    // console.log(">>>>>>>>>>>>", name);
+    // console.log(">>>>>>>>>>>>", email);
+    // console.log(">>>>>>>>>>>>", password);
+    // console.log(">>>>>>>>>>>>", confirmPassword);
+    console.log(">>>>>>>>>>>>>>>", getVals);
     
     return {
-      name,
-      email,
-      password,
-      confirmPassword,
-      signupSubmitButton,
-
+      name1,
+      email1,
+      password1,
+      confirmPassword1,
+      getVals
+      
     }
   },
 };

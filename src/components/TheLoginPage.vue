@@ -3,7 +3,7 @@
     <q-form method="post">
     <q-input
       outlined
-      v-model="email"
+      v-model="emailAtLogin"
       label="Username"
       placeholder="Email"
       :dense="dense"
@@ -12,7 +12,7 @@
     <q-input
       outlined
       type="password"
-      v-model="password"
+      v-model="passwordAtLogin"
       label="Password"
       placeholder="Password"
       :dense="dense"
