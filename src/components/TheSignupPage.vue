@@ -55,8 +55,26 @@
 </template>
 
 <script>
+import { storeToRefs } from 'pinia';
+import { userData } from '../stores/TheUserData'
 export default {
-  setup() {},
+  setup() {
+    let usersDataFromStore = userData();
+    const { name } = storeToRefs(usersDataFromStore);
+    const { email } = storeToRefs(usersDataFromStore);
+    const { password } = storeToRefs(usersDataFromStore);
+    const { confirmPassword } = storeToRefs(usersDataFromStore);
+    const { signupSubmitButton } = storeToRefs(usersDataFromStore);
+    
+    return {
+      name,
+      email,
+      password,
+      confirmPassword,
+      signupSubmitButton,
+
+    }
+  },
 };
 </script>
 

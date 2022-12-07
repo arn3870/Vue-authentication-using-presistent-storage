@@ -3,7 +3,7 @@
     <q-form method="post">
     <q-input
       outlined
-      v-model="name"
+      v-model="email"
       label="Username"
       placeholder="Email"
       :dense="dense"
@@ -31,8 +31,20 @@
 </template>
 
 <script>
+import { userData } from 'src/stores/TheUserData';
+import { storeToRefs } from 'pinia';
 export default {
-  setup() {},
+  setup() {
+    let userDataFromStore = userData();
+    const { email } = storeToRefs(userDataFromStore);
+    const { password } = storeToRefs(userDataFromStore)
+
+    return{
+      userDataFromStore,  
+      email,
+      password
+  }
+  },
 };
 </script>
 

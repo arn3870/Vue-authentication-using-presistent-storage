@@ -2,8 +2,19 @@ import { defineStore } from "pinia";
 
 export const userData = defineStore("userData", {
   state: () => {
-    return {};
+    const name = [''];
+    const email = [''];
+    const password = [''];
+    const confirmPassword = [''];
+    const signupSubmitButton = () => {};
+    return {
+      name,
+      email,
+      password,
+      confirmPassword,
+      signupSubmitButton,
+    };
   },
-  getters: {},
+
   actions: {},
 });
