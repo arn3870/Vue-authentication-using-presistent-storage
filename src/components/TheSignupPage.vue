@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="main_div_login">
-      <q-form>
+      <q-form @submit="signupUser">
         <q-input
           outlined
-          v-model="name1"
+          v-model="name"
           label="Name"
           placeholder="Name"
           :dense="dense"
@@ -12,7 +12,7 @@
         <br />
         <q-input
           outlined
-          v-model="email1"
+          v-model="email"
           label="Email"
           placeholder="Email"
           :dense="dense"
@@ -21,7 +21,7 @@
         <q-input
           outlined
           type="password"
-          v-model="password1"
+          v-model="password"
           label="Password"
           placeholder="Password"
           :dense="dense"
@@ -30,7 +30,7 @@
         <q-input
           outlined
           type="password"
-          v-model="confirmPassword1"
+          v-model="confirmPassword"
           label="Confirm Password"
           placeholder="Confirm Password"
           :dense="dense"
@@ -40,7 +40,7 @@
           class="sign-up-button"
           color="secondary"
           label="Signup"
-          @click="getVals"
+          type="submit"
         />
         <br />
       </q-form>
@@ -55,42 +55,39 @@
 </template>
 
 <script>
-import { storeToRefs } from 'pinia';
-import { userData } from '../stores/TheUserData'
-import { computed, ref } from 'vue'
+import { storeToRefs } from "pinia";
+import { userData } from "../stores/TheUserData";
+import { ref } from "vue";
 export default {
   setup() {
-    let email1 = ref('');
-    let name1 = ref('');
-    let password1 = ref('');
-    let confirmPassword1 = ref('');
+    let email = ref("");
+    let name = ref("");
+    let password = ref("");
+    let confirmPassword = ref("");
     let usersDataFromStore = userData();
-    let { name } = storeToRefs(usersDataFromStore);
-    let { email } = storeToRefs(usersDataFromStore);
-    let { password } = storeToRefs(usersDataFromStore);
-    let { confirmPassword } = storeToRefs(usersDataFromStore);
+    let { userDataCollection } = storeToRefs(usersDataFromStore);
 
-    let getVals = () => {
-    name.value.push(name1.value);
-    email.value.push(email1.value);
-    password.value.push(password.value);
-    confirmPassword.value.push(confirmPassword.value)
-    }
+    let signupUser = () => {
+      let user = {
+        name: name.value,
+        email: email.value,
+        password: password.value,
+        confirmPassword: confirmPassword.value,
+      };
+      userDataCollection.value.push(user);
+    };
+      // localStorage.setItem("user", JSON.stringify(user));
+      // alert("Signup successful");
+      // this.$router.push("/login");
+    console.log(">>>>>>>>>>>>>>>>", userDataCollection.value);
 
-    // console.log(">>>>>>>>>>>>", name);
-    // console.log(">>>>>>>>>>>>", email);
-    // console.log(">>>>>>>>>>>>", password);
-    // console.log(">>>>>>>>>>>>", confirmPassword);
-    console.log(">>>>>>>>>>>>>>>", getVals);
-    
     return {
-      name1,
-      email1,
-      password1,
-      confirmPassword1,
-      getVals
-      
-    }
+      name,
+      email,
+      password,
+      confirmPassword,
+      signupUser,
+    };
   },
 };
 </script>

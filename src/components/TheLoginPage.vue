@@ -1,10 +1,10 @@
 <template>
   <div class="main_div_login">
-    <q-form method="post">
+    <q-form @submit="userAuthentication">
     <q-input
       outlined
       v-model="emailAtLogin"
-      label="Username"
+      label="Email"
       placeholder="Email"
       :dense="dense"
     />
@@ -18,7 +18,7 @@
       :dense="dense"
     />
     <br />
-    <q-btn class="q-button" color="secondary" label="Login" />
+    <q-btn class="q-button" color="secondary" label="Login" type="submit" />
     <br />
   </q-form>
     <p style="margin: 0px 105px 16px">
@@ -31,18 +31,36 @@
 </template>
 
 <script>
-import { userData } from 'src/stores/TheUserData';
+import { ref } from 'vue'
+import { userData } from '../stores/TheUserData'
 import { storeToRefs } from 'pinia';
+// import { route } from 'quasar/wrappers';
 export default {
   setup() {
+    let emailAtLogin = ref('');
+    let passwordAtLogin = ref('')
     let userDataFromStore = userData();
-    const { email } = storeToRefs(userDataFromStore);
-    const { password } = storeToRefs(userDataFromStore)
+    let { userDataCollection } = storeToRefs(userDataFromStore)
+
+    let userAuthentication = () => {
+      for (let i in userDataCollection.value){
+        if ( emailAtLogin.value === i.email && passwordAtLogin.value === i.password ){
+          this.$router.push({ name: 'home' })
+        }
+        else {
+          alert("email or password is not correct")
+        }
+      }
+    }
+
 
     return{
-      userDataFromStore,  
-      email,
-      password
+      emailAtLogin,
+      passwordAtLogin,
+      userDataFromStore,
+      userDataCollection,
+      userAuthentication  
+
   }
   },
 };
