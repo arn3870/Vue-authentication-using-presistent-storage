@@ -1,29 +1,32 @@
 <template>
   <div class="main_div_login">
     <q-form @submit="userAuthentication">
-    <q-input
-      outlined
-      v-model="emailAtLogin"
-      label="Email"
-      placeholder="Email"
-      :dense="dense"
-    />
-    <br />
-    <q-input
-      outlined
-      type="password"
-      v-model="passwordAtLogin"
-      label="Password"
-      placeholder="Password"
-      :dense="dense"
-    />
-    <br />
-    <q-btn class="q-button" color="secondary" label="Login" type="submit" />
-    <br />
-  </q-form>
+      <q-input
+        outlined
+        v-model="emailAtLogin"
+        label="Email"
+        placeholder="Email"
+        :dense="dense"
+      />
+      <br />
+      <q-input
+        outlined
+        type="password"
+        v-model="passwordAtLogin"
+        label="Password"
+        placeholder="Password"
+        :dense="dense"
+      />
+      <br />
+      <q-btn class="q-button" color="secondary" label="Login" type="submit" />
+      <br />
+    </q-form>
     <p style="margin: 0px 105px 16px">
       don't have an account?
-      <router-link to="/signup" style="color: #26a69a; border: none; padding: 0;">
+      <router-link
+        to="/signup"
+        style="color: #26a69a; border: none; padding: 0"
+      >
         Signup
       </router-link>
     </p>
@@ -31,37 +34,38 @@
 </template>
 
 <script>
-import { ref } from 'vue'
-import { userData } from '../stores/TheUserData'
-import { storeToRefs } from 'pinia';
-// import { route } from 'quasar/wrappers';
+import { ref } from "vue";
+import { userData } from "../stores/TheUserData";
+import { storeToRefs } from "pinia";
+import router from "../router/routes";
 export default {
   setup() {
-    let emailAtLogin = ref('');
-    let passwordAtLogin = ref('')
+    let emailAtLogin = ref("");
+    let passwordAtLogin = ref("");
     let userDataFromStore = userData();
-    let { userDataCollection } = storeToRefs(userDataFromStore)
+    let { userDataCollection } = storeToRefs(userDataFromStore);
 
     let userAuthentication = () => {
-      for (let i in userDataCollection.value){
-        if ( emailAtLogin.value === i.email && passwordAtLogin.value === i.password ){
-          this.$router.push({ name: 'home' })
-        }
-        else {
-          alert("email or password is not correct")
+      const user = localStorage.getItem("user");
+      for (let i in userDataCollection.value) {
+        if (
+          emailAtLogin.value === i.email &&
+          passwordAtLogin.value === i.password
+        ) {
+          this.$router.push({ path: "/home" });
+        } else {
+          alert("email or password is not correct");
         }
       }
-    }
+    };
 
-
-    return{
+    return {
       emailAtLogin,
       passwordAtLogin,
       userDataFromStore,
       userDataCollection,
-      userAuthentication  
-
-  }
+      userAuthentication,
+    };
   },
 };
 </script>
@@ -83,7 +87,7 @@ body {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 20px;
 }
-.q-button{
+.q-button {
   justify-content: center;
   margin: auto;
   display: flex;

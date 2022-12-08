@@ -49,9 +49,8 @@ a {
   text-decoration: none;
   margin: auto;
 }
-.anchor-tags{
+.anchor-tags {
   margin: auto 0 auto auto;
   right: 0;
 }
-
 </style>

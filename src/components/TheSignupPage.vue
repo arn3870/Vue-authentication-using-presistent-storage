@@ -57,7 +57,7 @@
 <script>
 import { storeToRefs } from "pinia";
 import { userData } from "../stores/TheUserData";
-import { ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 export default {
   setup() {
     let email = ref("");
@@ -76,11 +76,10 @@ export default {
       };
       userDataCollection.value.push(user);
     };
-      // localStorage.setItem("user", JSON.stringify(user));
-      // alert("Signup successful");
-      // this.$router.push("/login");
-    console.log(">>>>>>>>>>>>>>>>", userDataCollection.value);
 
+    // let user1 = signupUser('user');
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log(">>>>>>>>>>>>>>>>", userDataCollection.value);
     return {
       name,
       email,
