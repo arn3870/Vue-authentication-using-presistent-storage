@@ -1,0 +1,30 @@
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+// import BreedSearchView from '../views/BreedSearchView.vue'
+import ImageGallery from "../components/ImageGallery.vue";
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: "/",
+      name: "default",
+      component: HomeView,
+    },
+    {
+      path: "/home",
+      name: "home",
+      component: ImageGallery,
+    },
+    {
+      path: "/search",
+      name: "Search",
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import("../views/BreedSearchView.vue"),
+    },
+  ],
+});
+
+export default router;

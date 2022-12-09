@@ -37,13 +37,13 @@
 import { ref } from "vue";
 import { userData } from "../stores/TheUserData";
 import { storeToRefs } from "pinia";
+// import VueRouter from 'vue-router'
 export default {
   setup() {
     let emailAtLogin = ref("");
     let passwordAtLogin = ref("");
     let userDataFromStore = userData();
     let { userDataCollection } = storeToRefs(userDataFromStore);
-
     let userAuthentication = () => {
       const data = JSON.parse(localStorage.getItem("userDataCollection"));
       for (let i of data) {
@@ -57,7 +57,7 @@ export default {
       }
       alert("wrong credentials");
       return false;
-}
+      }
     return {
       emailAtLogin,
       passwordAtLogin,
