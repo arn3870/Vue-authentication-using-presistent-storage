@@ -5,6 +5,9 @@ const routes = [
   {
     path: '/',
     component: TheLoginPage,
+    // children: [
+    //   { path: '/signup', component: TheSignupPage }
+    // ]
   },
 {
   path: '/signup',

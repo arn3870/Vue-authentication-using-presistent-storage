@@ -37,23 +37,26 @@
 import { ref } from "vue";
 import { userData } from "../stores/TheUserData";
 import { storeToRefs } from "pinia";
-// import VueRouter from 'vue-router'
 export default {
   setup() {
     let emailAtLogin = ref("");
     let passwordAtLogin = ref("");
     let userDataFromStore = userData();
     let { userDataCollection } = storeToRefs(userDataFromStore);
+
     let userAuthentication = () => {
-      const data = JSON.parse(localStorage.getItem("userDataCollection"));
-      for (let i of data) {
-        if (
-          emailAtLogin.value === i.email &&
-          passwordAtLogin.value === i.password
-        ) {
-          // alert("logged in");
-          return true;
-        }
+      localStorage.getItem("userDataCollection");
+      console.log(':::::', userDataCollection);
+      for (let i in userDataCollection) {
+        console.log(':::::', i);
+        // if (
+        //   emailAtLogin.value === i.email
+        //   ) {
+        //     // alert('it worked!')
+        //     // this.$router.push({ path: "/home" });
+        //   } else {
+        //   // alert("email or password is not correct");
+        // }
       }
       alert("wrong credentials");
       return false;
