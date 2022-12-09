@@ -1,6 +1,6 @@
 <template>
   <div class="main_div_login">
-    <q-form @submit="userAuthentication">
+    <q-form @submit.prevent="userAuthentication">
       <q-input
         outlined
         v-model="emailAtLogin"
@@ -37,7 +37,6 @@
 import { ref } from "vue";
 import { userData } from "../stores/TheUserData";
 import { storeToRefs } from "pinia";
-import router from "../router/routes";
 export default {
   setup() {
     let emailAtLogin = ref("");
@@ -46,16 +45,18 @@ export default {
     let { userDataCollection } = storeToRefs(userDataFromStore);
 
     let userAuthentication = () => {
-      const user = localStorage.getItem("user");
-      for (let i in userDataCollection.value) {
-        if (
-          emailAtLogin.value === i.email &&
-          passwordAtLogin.value === i.password
-        ) {
-          this.$router.push({ path: "/home" });
-        } else {
-          alert("email or password is not correct");
-        }
+      localStorage.getItem("userDataCollection");
+      console.log(':::::', userDataCollection);
+      for (let i in userDataCollection) {
+        console.log(':::::', i);
+        // if (
+        //   emailAtLogin.value === i.email
+        //   ) {
+        //     // alert('it worked!')
+        //     // this.$router.push({ path: "/home" });
+        //   } else {
+        //   // alert("email or password is not correct");
+        // }
       }
     };
 

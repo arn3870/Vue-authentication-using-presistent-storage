@@ -62,23 +62,26 @@ export default {
   setup() {
     let email = ref("");
     let name = ref("");
+    let user = {}
     let password = ref("");
     let confirmPassword = ref("");
     let usersDataFromStore = userData();
     let { userDataCollection } = storeToRefs(usersDataFromStore);
 
     let signupUser = () => {
-      let user = {
+      user = {
         name: name.value,
         email: email.value,
         password: password.value,
         confirmPassword: confirmPassword.value,
       };
+      if (name.value === null && email.value === null && password.value === null && confirmPassword.value ===null ){
+      }
+      else   {
       userDataCollection.value.push(user);
+      localStorage.setItem("userDataCollection", JSON.stringify(userDataCollection.value));
+      }
     };
-
-    // let user1 = signupUser('user');
-    localStorage.setItem("user", JSON.stringify(user));
     console.log(">>>>>>>>>>>>>>>>", userDataCollection.value);
     return {
       name,
