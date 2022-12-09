@@ -45,16 +45,18 @@ export default {
     let { userDataCollection } = storeToRefs(userDataFromStore);
 
     let userAuthentication = () => {
-      localStorage.getItem("userDataCollection");
-      for (let i in userDataCollection) {
-        console.log(':::::', i);
-        if (emailAtLogin.value === i.email && passwordAtLogin.value === i.password) {
-          alert("wrong credentials")
+      const data = JSON.parse(localStorage.getItem("userDataCollection"));
+      for (let i of data) {
+        if (
+          emailAtLogin.value === i.email &&
+          passwordAtLogin.value === i.password
+        ) {
+          // alert("logged in");
           return true;
-    }
-  }
-  alert("success")
-  return false;
+        }
+      }
+      alert("wrong credentials");
+      return false;
 }
     return {
       emailAtLogin,
