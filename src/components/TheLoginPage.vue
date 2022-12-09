@@ -46,20 +46,16 @@ export default {
 
     let userAuthentication = () => {
       localStorage.getItem("userDataCollection");
-      console.log(':::::', userDataCollection);
       for (let i in userDataCollection) {
         console.log(':::::', i);
-        // if (
-        //   emailAtLogin.value === i.email
-        //   ) {
-        //     // alert('it worked!')
-        //     // this.$router.push({ path: "/home" });
-        //   } else {
-        //   // alert("email or password is not correct");
-        // }
-      }
-    };
-
+        if (emailAtLogin.value === i.email && passwordAtLogin.value === i.password) {
+          alert("wrong credentials")
+          return true;
+    }
+  }
+  alert("success")
+  return false;
+}
     return {
       emailAtLogin,
       passwordAtLogin,
