@@ -57,8 +57,7 @@ export default {
       }
       alert("wrong credentials");
       return false;
-    };
-
+      }
     return {
       emailAtLogin,
       passwordAtLogin,
