@@ -1,31 +1,35 @@
 import TheLoginPage from '../pages/LoginPage.vue'
 import TheSignupPage from '../pages/SignupPage.vue'
-import HomePage from '../pages/HomePage.vue'
+import HomeView from '../pages/HomeView.vue'
 const routes = [
   {
     path: '/',
+    name: 'Default',
     component: TheLoginPage,
-    // children: [
-    //   { path: '/signup', component: TheSignupPage }
-    // ]
+  },
+  {
+    path: '/login',
+    nmae: 'Login',
+    component: TheLoginPage,
   },
 {
   path: '/signup',
+  name: 'Signup',
   component: TheSignupPage
 },
-
 {
-  path: '/home',
-  name: "home",
-  component: HomePage
-}
-
-  // Always leave this as last one,
-  // but you can also remove it
-  // {
-  //   path: '/:catchAll(.*)*',
-  //   component: () => import('pages/ErrorNotFound.vue')
-  // }
+  path: "/ImageGallery",
+  name: "Home",
+  component: HomeView,
+},
+{
+  path: "/search",
+  name: "Search",
+  // route level code-splitting
+  // this generates a separate chunk (About.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () => import("../pages/BreedSearchView.vue"),
+},
 ]
 
 export default routes
