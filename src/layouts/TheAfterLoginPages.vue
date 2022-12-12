@@ -1,18 +1,10 @@
 <template>
-  <header class="header">
-    <img class="logo" src="Brown Cat illustrated Cat Lover Logo.png" />
-    <div class="anchor-tags">
-      <router-link to="/home">Home</router-link>
-      <router-link to="/search">Search</router-link>
-    </div>
-  </header>
   <div class="mainAppDiv">
     <the-welcome-page></the-welcome-page>
   </div>
   <router-view />
 </template>
 <script>
-import { RouterLink, RouterView } from "vue-router";
 import TheWelcomePage from "../components/TheWelcomePage.vue";
 
 export default {
@@ -25,7 +17,7 @@ export default {
 
 <style scoped>
 .mainAppDiv {
-  background-image: url("https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bGlnaHRpbmd8ZW58MHx8MHx8&w=1000&q=80");
+  /* background-image: url("https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bGlnaHRpbmd8ZW58MHx8MHx8&w=1000&q=80"); */
   background-attachment: fixed;
   background-position: center;
   margin: -8px -8px -8px -8px;

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, ref, onBeforeMount } from "vue";
 import { catStore } from "../stores/TheCatData";
 import { storeToRefs } from "pinia";
 export default {
@@ -25,7 +25,7 @@ export default {
     const getImages = () => {
       fetchNewCat();
     };
-
+    let checkLogin
     return {
       getImages,
       urls,
@@ -42,7 +42,7 @@ h1 {
   font-weight: 500;
   font-size: 2.6rem;
   top: -10px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 h3 {
@@ -54,16 +54,11 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-image: url("https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8bGlnaHRpbmd8ZW58MHx8MHx8&w=1000&q=80");
-  background-attachment: fixed;
-  background-position: center;
-  margin: -8px -8px -8px -8px; */
 }
 
 .imagesDiv {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* gap: 10px; */
 }
 .imgSize {
   height: 300px;
