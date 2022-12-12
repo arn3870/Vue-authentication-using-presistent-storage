@@ -37,8 +37,10 @@
 import { ref } from "vue";
 import { userData } from "../stores/TheUserData";
 import { storeToRefs } from "pinia";
+import { useRouter } from "vue-router";
 export default {
   setup() {
+    const router = useRouter();
     let emailAtLogin = ref("");
     let passwordAtLogin = ref("");
     let userDataFromStore = userData();
@@ -51,11 +53,11 @@ export default {
           emailAtLogin.value === i.email &&
           passwordAtLogin.value === i.password
         ) {
-          alert("logged in");
+          router.push({ path: "/MainHome" });
           return true;
         }
       }
-      }
+    };
     return {
       emailAtLogin,
       passwordAtLogin,
