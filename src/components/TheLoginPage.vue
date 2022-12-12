@@ -45,7 +45,8 @@ export default {
     let passwordAtLogin = ref("");
     let userDataFromStore = userData();
     let { userDataCollection } = storeToRefs(userDataFromStore);
-
+    let { isLoggedIn } = storeToRefs(userDataFromStore);
+    let { boolLogin } = storeToRefs(userDataFromStore);
     let userAuthentication = () => {
       const data = JSON.parse(localStorage.getItem("userDataCollection"));
       for (let i of data) {
@@ -53,7 +54,8 @@ export default {
           emailAtLogin.value === i.email &&
           passwordAtLogin.value === i.password
         ) {
-          router.push({ path: "/MainHome" });
+          router.push({ path: "/home" });
+          boolLogin.value = true;
           return true;
         }
       }
@@ -64,6 +66,7 @@ export default {
       userDataFromStore,
       userDataCollection,
       userAuthentication,
+      isLoggedIn,
     };
   },
 };

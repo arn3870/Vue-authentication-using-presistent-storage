@@ -2,31 +2,34 @@
   <div>
     <div class="breedDropDown">
       <select v-model="catForDetails">
-        <option v-for="(i, index) in arrCatTypeNames" :key="i" :value="index">{{ i }}</option>
+        <option v-for="(i, index) in arrCatTypeNames" :key="i" :value="index">
+          {{ i }}
+        </option>
       </select>
-      </div>
+    </div>
     <div class="detailsScetion">
       <h2>Cat image</h2>
-      <img :src="catImageForBreed[catForDetails]"/>
-    <h2> Cat Temprament: </h2>
-      <h4>{{ catTemprament[catForDetails] }} </h4>
-    <h2> Cat Description: </h2>
-      <p> {{ catDescription[catForDetails] }}</p>
-  </div>
+      <img :src="catImageForBreed[catForDetails]" />
+      <h2>Cat Temprament:</h2>
+      <h4>{{ catTemprament[catForDetails] }}</h4>
+      <h2>Cat Description:</h2>
+      <p>{{ catDescription[catForDetails] }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import { searchForCatBreed } from "../stores/catSearchStore.js";
+import { searchForCatBreed } from "../stores/CatSearchStore.js";
 import { storeToRefs } from "pinia";
 import { ref, onMounted } from "vue";
 export default {
   setup() {
     let catSearchData = searchForCatBreed();
     const { searchByBreed } = catSearchData;
-    const { arrCatTypeNames, catDescription, catTemprament, catImageForBreed } = storeToRefs(catSearchData);
+    const { arrCatTypeNames, catDescription, catTemprament, catImageForBreed } =
+      storeToRefs(catSearchData);
     let catForDetails = ref();
-    console.log(arrCatTypeNames.value)
+    console.log(arrCatTypeNames.value);
     onMounted(() => {
       searchByBreed();
     });
@@ -35,7 +38,7 @@ export default {
       catDescription,
       catForDetails,
       catTemprament,
-      catImageForBreed
+      catImageForBreed,
     };
   },
 };
@@ -47,7 +50,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.detailsScetion{
+.detailsScetion {
   color: rgb(255, 122, 122);
   display: flex;
   justify-content: center;
@@ -57,11 +60,11 @@ export default {
   padding-right: 300px;
   padding-left: 300px;
 }
-img{
+img {
   width: 500px;
   height: 300px;
 }
-h2{
-  color:rgb(115, 115, 255)
+h2 {
+  color: rgb(115, 115, 255);
 }
 </style>
