@@ -8,11 +8,11 @@
       </select>
     </div>
     <div class="detailsScetion">
-      <h2>Cat image</h2>
+      <h3>Cat image</h3>
       <img :src="catImageForBreed[catForDetails]" />
-      <h2>Cat Temprament:</h2>
+      <h3>Cat Temprament:</h3>
       <h4>{{ catTemprament[catForDetails] }}</h4>
-      <h2>Cat Description:</h2>
+      <h3>Cat Description:</h3>
       <p>{{ catDescription[catForDetails] }}</p>
     </div>
   </div>
@@ -64,7 +64,7 @@ img {
   width: 500px;
   height: 300px;
 }
-h2 {
-  color: rgb(115, 115, 255);
+h3 {
+  color: rgb(0, 0, 255);
 }
 </style>

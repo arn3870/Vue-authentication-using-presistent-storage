@@ -29,11 +29,9 @@ export default {
     const router = useRouter();
     let userDatainApp = userData();
     let { isLoggedIn } = storeToRefs(userDatainApp);
-    let { LoginStatus } = storeToRefs(userDatainApp);
     let { boolLogin } = storeToRefs(userDatainApp);
-
     let Logout = () => {
-      boolLogin.value = !boolLogin.value;
+      boolLogin.value = false;
       router.push({ path: "/login" });
     };
     return {

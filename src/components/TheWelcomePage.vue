@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="mainDIv">
     <div v-if="loading" class="welcomeDiv">
       <h1>The Cat Gallery</h1>
@@ -27,6 +27,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
+      debugger;
       this.loading = false;
     }, 3000);
   },
@@ -58,4 +59,21 @@ h1 {
   text-align: center;
   font-size: 50px;
 }
-</style>
+</style> -->
+<template>
+  <div>
+    <image-gallery></image-gallery>
+  </div>
+</template>
+
+<script>
+import { userData } from "../stores/TheUserData";
+import ImageGallery from "./ImageGallery.vue";
+export default {
+  components: {
+    ImageGallery,
+  },
+  setup() {
+  },
+}
+</script>

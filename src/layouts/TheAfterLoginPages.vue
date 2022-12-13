@@ -5,13 +5,33 @@
   <router-view />
 </template>
 <script>
+import { storeToRefs } from "pinia";
 import TheWelcomePage from "../components/TheWelcomePage.vue";
-
+import { userData } from "../stores/TheUserData.js";
+import { useRouter } from "vue-router";
+import { onBeforeMount, ref } from "vue";
 export default {
   components: {
     TheWelcomePage,
   },
-  setup() {},
+  setup() {
+    let userDataInAfterLogin = userData();
+    let { boolLogin } = storeToRefs(userDataInAfterLogin);
+    const router = useRouter();
+    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>", boolLogin);
+
+    // onBeforeMount(() => {
+    //   if ((boolLogin.value = true)) {
+    //     console.log("i am before mounted");
+    //     return true;
+    //   }
+    //   else {
+    //     router.push({ path: "/home" });
+    //   }
+    // });
+    return {
+    };
+  },
 };
 </script>
 

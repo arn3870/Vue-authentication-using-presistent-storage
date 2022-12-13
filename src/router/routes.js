@@ -2,6 +2,7 @@ import TheLoginPage from "../pages/LoginPage.vue";
 import TheSignupPage from "../pages/SignupPage.vue";
 import HomeView from "../pages/HomeView.vue";
 import TheAfterLoginPages from "../layouts/TheAfterLoginPages.vue";
+
 const routes = [
   {
     path: "/",
