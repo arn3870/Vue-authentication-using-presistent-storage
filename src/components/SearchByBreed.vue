@@ -9,7 +9,7 @@
     </div>
     <div class="detailsScetion">
       <h3>Cat image</h3>
-      <img :src="catImageForBreed[catForDetails]" />
+      <img :src="catImageForBreed[catForDetails]" alt="Sorry! Image not available at this time" />
       <h3>Cat Temprament:</h3>
       <h4>{{ catTemprament[catForDetails] }}</h4>
       <h3>Cat Description:</h3>
